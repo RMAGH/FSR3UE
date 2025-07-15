@@ -73,21 +73,21 @@ public:
 		{
 			outPipeline->srvTextureBindings[i].slotIndex = i;
 			outPipeline->srvTextureBindings[i].resourceIdentifier = TShaderClass::GetBoundSRVs()[i];
-			FCStringWide::Strcpy(outPipeline->srvTextureBindings[i].name, 63, TShaderClass::GetBoundSRVNames()[i]);
+			FCStringWide::Strncpy(outPipeline->srvTextureBindings[i].name, TShaderClass::GetBoundSRVNames()[i], 63);
 		}
 
 		for (uint32 i = 0; i < outPipeline->uavTextureCount && i < FFX_MAX_NUM_UAVS; i++)
 		{
 			outPipeline->uavTextureBindings[i].slotIndex = i;
 			outPipeline->uavTextureBindings[i].resourceIdentifier = TShaderClass::GetBoundUAVs()[i];
-			FCStringWide::Strcpy(outPipeline->uavTextureBindings[i].name, 63, TShaderClass::GetBoundUAVNames()[i]);
+			FCStringWide::Strncpy(outPipeline->uavTextureBindings[i].name, TShaderClass::GetBoundUAVNames()[i], 63);
 		}
 
 		for (uint32 i = 0; i < outPipeline->constCount && i < FFX_MAX_NUM_CONST_BUFFERS; i++)
 		{
 			outPipeline->constantBufferBindings[i].slotIndex = i;
 			outPipeline->constantBufferBindings[i].resourceIdentifier = TShaderClass::GetBoundCBs()[i];
-			FCStringWide::Strcpy(outPipeline->constantBufferBindings[i].name, 63, TShaderClass::GetBoundCBNames()[i]);
+			FCStringWide::Strncpy(outPipeline->constantBufferBindings[i].name, TShaderClass::GetBoundCBNames()[i], 63);
 		}
 	}
 
